@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>K쇼핑</title>
+<meta name="description" content="K쇼핑 — 영상 속 제품 번호별 링크">
+<meta name="robots" content="noindex">
+<style>
+:root{--bg:#eef0f3;--card:#fff;--ink:#16181d;--sub:#6b7280;--line:#e5e7eb;--accent:#ff3d57}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#1a1d23;--ink:#f3f4f6;--sub:#9ca3af;--line:#2a2e36}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif}
+.wrap{max-width:480px;margin:0 auto;padding:28px 16px 40px}
+.head{text-align:center;margin-bottom:18px}
+.av{width:84px;height:84px;border-radius:50%;object-fit:cover;background:var(--line);display:block;margin:0 auto 10px}
+h1{font-size:20px;margin:0} .bio{color:var(--sub);font-size:13px;margin-top:4px}
+.find{display:flex;gap:8px;margin:16px 0 14px}
+.find input{flex:1;font-size:16px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+a.it{display:flex;align-items:center;gap:12px;background:var(--card);border-radius:14px;padding:10px 14px 10px 10px;
+margin-bottom:10px;text-decoration:none;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .1s}
+a.it:active{transform:scale(.98)} a.it.hit{outline:3px solid var(--accent)}
+.th{width:56px;height:56px;border-radius:10px;object-fit:cover;background:#fff;flex:none}
+.tx{flex:1;min-width:0} .nm{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.no{color:var(--accent);font-weight:800;margin-right:4px} .pr{font-size:12px;color:var(--sub);margin-top:2px}
+.go{color:var(--sub);font-size:20px}
+.disc{color:var(--sub);font-size:11px;text-align:center;margin-top:22px;line-height:1.5}
+</style></head><body><div class="wrap">
+<div class="head"><img class="av" src="avatar.jpg" alt=""><h1>K쇼핑</h1><div class="bio">@k쇼핑_kmp</div></div>
+<div class="find"><input id="q" inputmode="numeric" placeholder="영상에서 본 번호를 입력하세요 (예: 1)"></div>
+<div id="list">
+<a class="it" id="n1" data-no="1" href="https://link.coupang.com/a/iDN419KWpo" target="_blank" rel="sponsored nofollow noopener"><img class="th" src="img/01.jpg" alt="" loading="lazy"><div class="tx"><div class="nm"><span class="no">[ 01 ]</span>닌자 블라스트 맥스 무선 블렌더</div><div class="pr">109,900원</div></div><span class="go">›</span></a>
+</div>
+<p class="disc">이 페이지는 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.</p>
+</div>
+<script>
+const q=document.getElementById('q');
+q.addEventListener('input',()=>{
+  const v=q.value.trim();document.querySelectorAll('a.it').forEach(a=>{
+    const hit=v&&a.dataset.no===String(parseInt(v,10));a.classList.toggle('hit',!!hit);
+    a.style.display=!v||hit||a.textContent.includes(v)?'':'none';
+    if(hit)a.scrollIntoView({block:'center',behavior:'smooth'});});
+});
+const h=parseInt(location.hash.slice(1),10);if(h){q.value=h;q.dispatchEvent(new Event('input'));}
+</script></body></html>
